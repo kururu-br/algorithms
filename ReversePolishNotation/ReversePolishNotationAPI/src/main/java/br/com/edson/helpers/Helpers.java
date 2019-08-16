@@ -5,11 +5,11 @@
  * This is the Helpers class implementing methods to help during the converter process                  |
  *                                                                                                      |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- * 	   Method		|	Input	|	Output	|	Description                                             |
+ *    Method    |   Input    |	Output	|	Description                                             |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- * 	   priority  	|  Character|	Integer	|	Return the priority number of an operator in a map      |
- * 	   isOperator	|  Character|	Boolean |	Check if the character is an operator or not            |
- * 	   isOperand	|  Character|	Boolean |	Check if the character is an operand or not             |
+ *  priority  	|  Character |	Integer	|	Return the priority number of an operator in a map      |
+ *  isOperator	|  Character |	Boolean |	Check if the character is an operator or not            |
+ *  isOperand	|  Character |	Boolean |	Check if the character is an operand or not             |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  * @author         Edson Martins   <edsonjam@gmail.com>                                                 |
  * @modifiedBy     Edson Martins   <edsonjam@gmail.com>                                                 |
