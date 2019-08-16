@@ -6,7 +6,7 @@
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  * Input message format:                                                                                |
  * {                                                                                                    |
- * 	 "expression": "<infix/postfix expression>"                                                         |
+ *   "expression": "<infix/postfix expression>"                                                         |
  * }                                                                                                    |
  *                                                                                                      |
  * Output message format:                                                                               |
