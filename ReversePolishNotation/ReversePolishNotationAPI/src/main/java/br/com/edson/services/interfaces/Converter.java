@@ -2,11 +2,11 @@
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────┐
  * Converter                                                                                            |
  *                                                                                                      |
- * This is the Converter interface.                									        		  	|
+ * This is the Converter interface.                                                                     |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- * 	   Method		|	Input	|	Output	|	Description                                             |
+ *    Method    |   Input   |	Output	|	Description                                             |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- * 	   convert  	|  String   |	String	|	Method to convert between infix to postfix or vice versa|
+      convert  	|  String   |	String	|	Method to convert between infix to postfix or vice versa|
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  *                                                                                                      |
  * @author         Edson Martins   <edsonjam@gmail.com>                                                 |
