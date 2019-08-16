@@ -5,15 +5,15 @@
  * This is the controller with the entry points from Reverse Polish Notation algorithm.                 |
  *                                                                                                      |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- * 	   Method		|	Input					 |	Output	|	Description                             |
+ *    Method   |	Input               |	Output	|	Description                             |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- * 	   convert  	|  - type ("infix"/"postfix")|	JSON 	|	Entry point to convert between          |
- *                  |  - JSON    				 |			|	infix/postfix							|
+ *    convert  |  - type ("infix"/"postfix")|	JSON 	|	Entry point to convert between          |
+ *             |  - JSON    		    |	        |	infix/postfix				|
  *                                                                                                      |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  * Input format:                                                                                        |
  * {                                                                                                    |
- * 	 "expression": "<infix/postfix expression>"                                                         |
+ *   "expression": "<infix/postfix expression>"                                                         |
  * }                                                                                                    |
  *                                                                                                      |
  * Output format:                                                                                       |
@@ -48,7 +48,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -69,7 +69,7 @@ public class InfixPostfixConverterController {
 		this.postFixConverterService = postFixConverterService;
 	}
 
-	@PostMapping(value="/convert/{type}", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
+	@GetMapping(value="/convert/{type}", consumes= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE}
 										, produces= {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	public ResponseEntity<Message> convert(@PathVariable("type") String type, @RequestBody Message model) {
 		
