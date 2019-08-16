@@ -5,4 +5,4 @@ A set of Algorithms and Data Structures coded in Microservices mode
 
 Algorithm                  | Data Structure | Language      |  Status       | Project
 -------------------------- | -------------- | ------------- | ------------- | -------------
-Convert Infix to Postfix   | Stack          | Java          |  :hourglass:  | [ReversePolishNotation](https://github.com/kururu-br/algorithms/tree/master/ReversePolishNotationAPI "Reverse Polish Notation")
+Convert Infix to Postfix   | Stack          | Java          |  :hourglass:  | [ReversePolishNotation](https://github.com/kururu-br/algorithms/tree/master/ReversePolishNotation "Reverse Polish Notation")
