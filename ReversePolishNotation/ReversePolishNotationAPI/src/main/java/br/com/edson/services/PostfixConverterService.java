@@ -13,9 +13,9 @@
  *   │ (A * (B + (C / D) ) ) │   │     A B C D / + *     │                                              |
  *   └───────────────────────┘   └───────────────────────┘                                              |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- *       Method      |	Input	|	Output	|	Description                                     |
+ *       Method      |	Input	|	Output	|	Description                                             |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- *    converter      |  String	|	String 	|	Converter an infix expression to postfix        |
+ *    converter      |  String	|	String 	|	Converter an infix expression to postfix                |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  *                                                                                                      |
  * @author         Edson Martins   <edsonjam@gmail.com>                                                 |
@@ -37,6 +37,8 @@
 package br.com.edson.services;
 
 import java.util.logging.Logger;
+import java.util.regex.MatchResult;
+import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -49,7 +51,7 @@ import br.com.edson.services.interfaces.implementations.StackImpl;
 @Service
 public class PostfixConverterService implements Converter {
 
-	private StackImpl<Character> stack;
+	private StackImpl<String> stack;
 	private Helpers helpers;
 
 	private static final Logger log = Logger.getLogger(PostfixConverterService.class.getName());
@@ -65,49 +67,52 @@ public class PostfixConverterService implements Converter {
 
 		String postfix = "";
 		log.info("Converting infix expression " + expression + " to postfix.");
+		String[] ch = Pattern.compile("[a-zA-Z0-9{1,2}\\ˆ|\\+|-|\\*|\\|\\(|\\)/]")
+                .matcher(expression)
+                .results()
+                .map(MatchResult::group)
+                .toArray(String[]::new);
 
-		for (int i = 0; i < expression.length(); i++) {
+		for (int i = 0; i < ch.length; i++) {
 			
-			Character ch = expression.charAt(i);
-			
-			if (ch == '(' ) {
-				stack.push(ch);
+			if (ch[i].contains("(")) {
+				stack.push(ch[i]);
 				continue;
 			}
 			
-			if (ch == ')' ) {
-				while (stack.peek() != '(') {
+			if (ch[i].contains(")")) {
+				while (!String.valueOf(stack.peek()).contains("(")) {
 					postfix += stack.pop();
 				}
 				stack.pop();
 				continue;
 			}
-			if (helpers.isOperand(ch)) {
-				postfix += ch;
+			if (helpers.isOperand(ch[i])) {
+				postfix += ch[i];
 				continue;
 			}
 			
-			if (helpers.isOperator(ch)) {
+			if (helpers.isOperator(ch[i])) {
 				if (stack.isEmpty()) {
-					stack.push(ch);
+					stack.push(ch[i]);
 				}
-				else if (helpers.priority(ch) > helpers.priority(stack.peek())) {
-					stack.push(ch);
+				else if (helpers.priority(ch[i]) > helpers.priority(String.valueOf(stack.peek()))) {
+					stack.push(ch[i]);
 				} else {
 					while(!stack.isEmpty()) {
 						postfix += stack.pop();
 					}
-					stack.push(ch);
+					stack.push(ch[i]);
 				}
 				continue;
 			}
 		}
-		while(!stack.isEmpty()) {
+		if (stack.getSize() == 1) {
 			postfix += stack.pop();
-		}	
-
-		log.info("Expression infix " + expression + " converted to " + postfix);
-		return postfix;
+			log.info("Expression infix " + expression + " converted to " + postfix);
+			return postfix;
+		}
+		return "Postfix is not well-formed";
 	}
 
 }

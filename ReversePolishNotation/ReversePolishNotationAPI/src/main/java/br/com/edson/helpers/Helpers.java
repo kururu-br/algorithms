@@ -5,11 +5,11 @@
  * This is the Helpers class implementing methods to help during the converter process                  |
  *                                                                                                      |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- *    Method    |   Input    |	Output	|	Description                                             |
+ *    Method    |  Input     |  Output  |   Description                                                 |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- *  priority  	|  Character |	Integer	|	Return the priority number of an operator in a map      |
- *  isOperator	|  Character |	Boolean |	Check if the character is an operator or not            |
- *  isOperand	|  Character |	Boolean |	Check if the character is an operand or not             |
+ *  priority  	|  Character |  Integer |   Return the priority number of an operator in a map          |
+ *  isOperator	|  Character |  Boolean |   Check if the character is an operator or not                |
+ *  isOperand	|  Character |  Boolean |   Check if the character is an operand or not                 |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  * @author         Edson Martins   <edsonjam@gmail.com>                                                 |
  * @modifiedBy     Edson Martins   <edsonjam@gmail.com>                                                 |
@@ -37,28 +37,28 @@ import org.springframework.stereotype.Component;
 @Component
 public class Helpers {
 	
-	private static final Map<Character, Integer> operatorsPriority = new HashMap<>();
+	private static final Map<String, Integer> operatorsPriority = new HashMap<>();
 	
 	public Helpers() {
 		
-		operatorsPriority.put('ˆ', 3);
-		operatorsPriority.put('*', 2);
-		operatorsPriority.put('/', 2);
-		operatorsPriority.put('+', 1);
-		operatorsPriority.put('-', 1);
-		operatorsPriority.put('(', 0);
+		operatorsPriority.put("ˆ", 3);
+		operatorsPriority.put("*", 2);
+		operatorsPriority.put("/", 2);
+		operatorsPriority.put("+", 1);
+		operatorsPriority.put("-", 1);
+		operatorsPriority.put("(", 0);
 	}
 	
-	public Integer priority(Character operator) {
+	public Integer priority(String operator) {
 		return operatorsPriority.get(operator);
 	}
 	
-	public Boolean isOperator(Character operator) {
+	public Boolean isOperator(String operator) {
 		return operatorsPriority.containsKey(operator);
 	}
 	
-	public Boolean isOperand(Character operator) {
-		return !operatorsPriority.containsKey(operator);
+	public Boolean isOperand(String operator) {
+		return !(operatorsPriority.containsKey(operator));
 	}
 
 }

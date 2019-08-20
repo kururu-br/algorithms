@@ -16,11 +16,11 @@
  *   └──────────┘     └──────────┘      └──────────┘     └──────────┘     └──────────┘                  |
  *                                                                                                      |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- *    Method   |   Input  |   Output	|	Description                                             |
+ *    Method   |   Input  |   Output    |  Description                                                  |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- *     push    |  T data  |    N/A 	|	Push (stack up) an element on the stack data structure  |
- *     pop     |  N/A     |   T data 	|	Pop (remove) an element from the stack                  |
- *     peek    |  N/A     |   T data 	|	Peek (not remove) the element from the top of the stack |
+ *     push    |  T data  |    N/A      |  Push (stack up) an element on the stack data structure       |
+ *     pop     |  N/A     |   T data 	|  Pop (remove) an element from the stack                       |
+ *     peek    |  N/A     |   T data 	|  Peek (not remove) the element from the top of the stack      |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  *                                                                                                      |
  * @author         Edson Martins   <edsonjam@gmail.com>                                                 |

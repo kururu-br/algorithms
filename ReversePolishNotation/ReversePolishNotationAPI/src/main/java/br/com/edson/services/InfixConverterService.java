@@ -13,9 +13,9 @@
  *   │     A B C D / + *     │   │ (A * (B + (C / D) ) ) │                                              |
  *   └───────────────────────┘   └───────────────────────┘                                              |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- *    Method      |   Input   |	Output	|	Description                                             |
+ *    Method      |   Input   |	Output	|	Description                                                 |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- *    converter   |  String   |	String 	|	Converter a postfix expression to infix                 |
+ *    converter   |  String   |	String 	|	Converter a postfix expression to infix                     |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  *                                                                                                      |
  * @author         Edson Martins   <edsonjam@gmail.com>                                                 |
@@ -38,19 +38,52 @@ package br.com.edson.services;
 
 import java.util.logging.Logger;
 
-import br.com.edson.services.interfaces.Converter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
+import org.springframework.stereotype.Service;
 
+import br.com.edson.helpers.Helpers;
+import br.com.edson.services.interfaces.Converter;
+import br.com.edson.services.interfaces.implementations.StackImpl;
+
+@Service
 public class InfixConverterService implements Converter {
+	
+	private StackImpl<String> stack;
+	private Helpers helpers;
 
 	private static final Logger log = Logger.getLogger(InfixConverterService.class.getName());
+	
+	@Autowired
+	public InfixConverterService(Environment env, Helpers helpers) {
+		stack = new StackImpl<>(Integer.parseInt(env.getProperty("stack.capacity")));
+		this.helpers = helpers;
+	}
 
 	@Override
-	public String converter(String value) {
+	public String converter(String expression) {
 
-		log.info("Started converter postfix expression " + value + " to infix.");
-
-		log.info("Expression postfix " + value + " converted to " + value);
-		return "not implemented";
+		String[] ch = expression.split(" ");
+		log.info("Started converter postfix expression " + expression + " to infix.");
+		for (int i = 0; i < ch.length; i++) {
+			
+			if (helpers.isOperand(ch[i])) {
+				stack.push(ch[i]);
+				continue;
+			}
+			else if (helpers.isOperator(ch[i])) { 
+				String elem1 = stack.pop();
+				String elem2 = stack.pop();
+				stack.push("("+ elem2 + ch[i] + elem1 + ")");
+				
+			}
+		}
+		
+		if (stack.getSize() == 1) {
+			log.info("Expression postfix " + expression + " converted to " + stack.peek());
+			return stack.pop();
+		}
+		return "Infix is not well-formed";
 	}
 
 }
