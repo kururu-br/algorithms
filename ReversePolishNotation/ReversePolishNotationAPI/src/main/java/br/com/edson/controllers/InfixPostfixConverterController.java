@@ -5,10 +5,10 @@
  * This is the controller with the entry points from Reverse Polish Notation algorithm.                 |
  *                                                                                                      |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- *    Method   |	Input                   |   Output   |  Description                                 |
+ *    Method   |  Input                     |   Output  |  Description                                  |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- *    convert  |  - type ("infix"/"postfix")|   JSON     |  Entry point to convert between infix/postfix|
- *             |  - JSON                    |            |                                              |
+ *    convert  |  - type ("infix"/"postfix")|   JSON    |  Entry point to convert between infix/postfix |
+ *             |  - JSON                    |           |                                               |
  *                                                                                                      |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  * Input format:                                                                                        |

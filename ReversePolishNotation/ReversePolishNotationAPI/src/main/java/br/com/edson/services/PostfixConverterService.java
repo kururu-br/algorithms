@@ -13,9 +13,9 @@
  *   │ (A * (B + (C / D) ) ) │   │     A B C D / + *     │                                              |
  *   └───────────────────────┘   └───────────────────────┘                                              |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────| 
- *       Method      |	Input	|	Output	|	Description                                             |
+ *   Method      |  Input  |  Output  |  Description                                                    |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
- *    converter      |  String	|	String 	|	Converter an infix expression to postfix                |
+ *   converter   |  String |  String  |  Converter an infix expression to postfix                       |
  * ─────────────────────────────────────────────────────────────────────────────────────────────────────|
  *                                                                                                      |
  * @author         Edson Martins   <edsonjam@gmail.com>                                                 |
